@@ -3,8 +3,8 @@ export default function taskBlock(trueOrFalse) {
   const task2 = true;
 
   if (trueOrFalse) {
-    task = true;  // No need to redeclare with 'let' here
-    task2 = false; // No need to redeclare with 'let' here
+    const task = true;
+    const task2 = false;
   }
 
   return [task, task2];
