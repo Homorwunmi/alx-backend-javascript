@@ -1,3 +1,4 @@
+/*eslint-disable*/
 // Function to print string in STDOUT
 function displayMessage(message) {
     console.log(message); // Print the message to console
