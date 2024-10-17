@@ -42,26 +42,15 @@ const app = http.createServer((request, response) => {
   } else if (request.url === '/students') {
     // Handle requests to the "/students" URL path
     response.writeHead(200, { 'Content-Type': 'text/plain' });
-    /*response.write('This is the list of our students\n');
+    response.write('This is the list of our students\n');
     // Get the student data asynchronously
     countStudents(process.argv[2].toString())
     .then((output) => {
       // response.end(`${output}`);
       response.end(output);
     }).catch((error) => {
-      // response.end(error.message);
       response.statusCode = 404;
-      response.end('Cannot load the database');*/
-      response.end('Hello Holberton School!');
-  } else if (request.url === '/students') {
-    // Handle the /students URL path
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    countStudents(process.argv[2])
-      .then((studentList) => {
-        response.end(`This is the list of our students\n${studentList}`);
-      })
-      .catch((error) => {
-        response.end(`This is the list of our students\n${error.message}`);
+      response.end('Cannot load the database');
     });
   }
 });
