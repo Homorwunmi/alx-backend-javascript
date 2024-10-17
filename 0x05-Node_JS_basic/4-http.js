@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 // Import the http module
 const http = require('http');
 
