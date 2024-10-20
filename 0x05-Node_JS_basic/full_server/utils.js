@@ -7,8 +7,8 @@ import fs from 'fs';
 const readDatabase = (filePath) => {
   return new Promise((resolve, reject) => {
     // Read the file content asynchronously
-    fs.readFile(filePath, 'utf-8', (error, data) => {
-      if (error) {
+    fs.readFile(filePath, 'utf-8', (err, data) => {
+      if (err) {
         // Reject the promise if there's an error reading the file
         reject(new Error('Cannot load the database'));
       } else {
