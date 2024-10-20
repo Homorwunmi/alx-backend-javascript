@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import express from 'express'; // Import the Express module
-import routes from './routes/index'; // Import the routes from the index file
+import router from './routes/index'; // Import the routes from the index file
 
 const app = express(); // Initialize an Express application instance
 
