@@ -8,7 +8,6 @@ export default class StudentsController {
   // Static method to handle the /students route
   static getAllStudents(request, response) {
     const databaseFile = process.argv[2]; // Get the database file path from command line args
-
     // Call readDatabase with the database file path
     readDatabase(databaseFile).then((studentsByField) => {
       let response = 'This is the list of our students\n';
@@ -41,10 +40,8 @@ export default class StudentsController {
     // Call readDatabase with the database file path
     readDatabase(databaseFile).then((studentsByField) => {
       const students = studentsByField[major] || [];
-
       // Send the response with a 200 status and the list of students
       response.status(200).send(`List: ${students.join(', ')}`);
-      
     }).catch(() => {
       // Send a 500 status code with an error message if there's an issue loading the database
       response.status(500).send('Cannot load the database');
