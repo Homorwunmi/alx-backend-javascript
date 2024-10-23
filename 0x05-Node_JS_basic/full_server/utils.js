@@ -1,36 +1,39 @@
 /* eslint-disable */
 
-// Import the fs module to handle file operations
-import fs from 'fs';
+const fs = require('fs');
 
-// Define and export the readDatabase function
-const readDatabase = (filePath) => {
+function readDatabase(path) {
   return new Promise((resolve, reject) => {
     // Read the file content asynchronously
-    fs.readFile(filePath, 'utf-8', (err, data) => {
+    fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
         // Reject the promise if there's an error reading the file
-        reject(new Error('Cannot load the database'));
-      } else {
-        // Split the file content into lines and process each line
-        const lines = data.trim().split('\n');
-        const studentsByField = {};
-
-        // Iterate over each line after the header line
-        for (let i = 1; i < lines.length; i++) {
-          const [firstname, lastname, age, field] = lines[i].split(',');
-
-          if (!studentsByField[field]) {
-            studentsByField[field] = [];
-          }
-          // Add the student's first name to the corresponding field's list
-          studentsByField[field].push(firstname);
-        }
-        // Resolve the promise with the resulting object
-        resolve(studentsByField);
+        reject(Error(err));
+        return;
       }
+      const content = data.toString().split('\n');
+
+      let students = content.filter((item) => item);
+
+      students = students.map((item) => item.split(','));
+
+      const fields = {};
+      for (const i in students) {
+        if (i !== 0) {
+          if (!fields[students[i][3]]) fields[students[i][3]] = [];
+
+          fields[students[i][3]].push(students[i][0]);
+        }
+      }
+
+      delete fields.field;
+
+      // Resolve the promise with the resulting object
+      resolve(fields);
+
+      //   return fields;
     });
   });
-};
+}
 
 export default readDatabase;
