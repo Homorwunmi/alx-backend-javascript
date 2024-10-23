@@ -31,7 +31,7 @@ function readDatabase(path) {
       // Resolve the promise with the resulting object
       resolve(fields);
 
-      //   return fields;
+        // return fields;
     });
   });
 }
